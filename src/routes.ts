@@ -6,6 +6,8 @@ import DetailUserController from "./controllers/user/DetailUserController";
 import RemoveUserController from "./controllers/user/RemoveUserController";
 import CreateCategoryController from "./controllers/category/CreateCategoryController";
 import EditCategoryController from "./controllers/category/EditCategoryController";
+import ListCategoryController from "./controllers/category/ListCategoryController";
+import RemoveCategoryController from "./controllers/category/RemoveCategoryController";
 
 const router = Router()
 
@@ -23,7 +25,8 @@ router.delete("/user/remove", RemoveUserController.handle)
 //Category Routes
 router.post('/category', isAuthenticated, CreateCategoryController.handle)
 router.put("/category/edit", isAuthenticated, EditCategoryController.handle)
-
+router.get("/category/all", isAuthenticated, ListCategoryController.handle)
+router.delete("/category/remove", isAuthenticated, RemoveCategoryController.handle)
 
 
 export default router
