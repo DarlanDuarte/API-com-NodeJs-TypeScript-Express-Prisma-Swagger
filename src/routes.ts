@@ -8,8 +8,13 @@ import CreateCategoryController from "./controllers/category/CreateCategoryContr
 import EditCategoryController from "./controllers/category/EditCategoryController";
 import ListCategoryController from "./controllers/category/ListCategoryController";
 import RemoveCategoryController from "./controllers/category/RemoveCategoryController";
+import multer from "multer";
+import uploadConfig from './config/multer'
+import CreateProductController from "./controllers/product/CreateProductController";
 
 const router = Router()
+const upload = multer(uploadConfig.upload('./tmp'))
+
 
 router.get('/test', (req: Request, res: Response) =>{
     return res.json({ok: true})
@@ -27,6 +32,9 @@ router.post('/category', isAuthenticated, CreateCategoryController.handle)
 router.put("/category/edit", isAuthenticated, EditCategoryController.handle)
 router.get("/category/all", isAuthenticated, ListCategoryController.handle)
 router.delete("/category/remove", isAuthenticated, RemoveCategoryController.handle)
+
+//Product Routes
+router.post("/product", isAuthenticated, upload.single('file') ,CreateProductController.handle)
 
 
 export default router
