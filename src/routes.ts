@@ -11,6 +11,7 @@ import RemoveCategoryController from "./controllers/category/RemoveCategoryContr
 import multer from "multer";
 import uploadConfig from './config/multer'
 import CreateProductController from "./controllers/product/CreateProductController";
+import EditProductController from "./controllers/product/EditProductController";
 
 const router = Router()
 const upload = multer(uploadConfig.upload('./tmp'))
@@ -35,6 +36,6 @@ router.delete("/category/remove", isAuthenticated, RemoveCategoryController.hand
 
 //Product Routes
 router.post("/product", isAuthenticated, upload.single('file') ,CreateProductController.handle)
-
+router.put("/product/edit", isAuthenticated, upload.single("file"), EditProductController.handle)
 
 export default router
