@@ -1,0 +1,73 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "API Controle de Estoque",
+        "description": "Esta API tem como objetivo facilitar o controle de estoque da sua empresa",
+        "termOfService":"http://localhost:8080/terms",
+        "contact": {
+            "email": "cloudxp.darlan@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths":{
+        "/v1/user":{
+            "post":{
+                "description": "Criar usuário",
+                "requestBody": {
+                    "description": "Dados necessarios para criação de um novo usuário",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/components/schemas/RequestCreateUser"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ResponseCreateUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components":{
+      "schemas":{
+        "CreateUser":{
+          "type":"object",
+          "properties": {
+            "name":{
+              "type":"string"
+            },
+            "email":{
+              "type":"string"
+            },
+            "password":{
+              "type":"string"
+            }
+          }
+        },
+        "ResponseCreateUser":{
+          "type":"object",
+          "properties":{
+            "id":{
+              "type":"string"
+            },
+            "name":{
+              "type":"string"
+            },
+            "email":{
+              "type":"string"
+            }
+          }
+        }
+      },
+      "securitySchemes":{}
+    }
+}
