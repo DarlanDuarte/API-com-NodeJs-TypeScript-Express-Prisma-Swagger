@@ -1,5 +1,5 @@
 {
-    "openapi": "3.0.0",
+    "openapi": "3.1.5",
     "info":{
         "title": "API Controle de Estoque",
         "description": "Esta API tem como objetivo facilitar o controle de estoque da sua empresa",
@@ -9,6 +9,7 @@
         },
         "version": "1.0.0"
     },
+
     "paths":{
       "/user":{
             "post":{
@@ -555,13 +556,14 @@
             }
           }
         }
-        
       },
       "securitySchemes":{
-        "bearerAuth":"Autenticação utilizando Json Web Token",
-        "type":"http",
-        "scheme":"bearer",
-        "bearerFormat":"JWT"
+        "bearerAuth":{
+          "type":"http",
+          "scheme":"bearer",
+          "bearerFormat":"JWT"
+
+        }
       }
     }
 }

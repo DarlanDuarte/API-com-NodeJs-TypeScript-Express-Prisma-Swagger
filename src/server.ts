@@ -9,9 +9,9 @@ import path from 'path'
 const app = express()
 app.use(express.json())
 app.use(cors())
-app.use(router)
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.use('/files', express.static(path.resolve(__dirname, "..", "tmp")))
+app.use(router)
 
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) =>{
